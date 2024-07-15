@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche contact{% endblock %}
+
+{% block body %}
+<div class="container d-flex align-items-center justify-content-center full-height">
+    <div class="card w-50">
+        <div class="card-header">
+            <h4 class="text-center">Contact</h4>
+        </div>
+        <div class="card-body">
+         {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+        
+            {{ form_start(form) }}
+                {{ form_row(form.firstName) }}
+                {{ form_row(form.lastName) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.department) }}
+                {{ form_row(form.message) }}
+            <div class="form-group text-center mt-5">
+                <button type="submit" class="btn btn-primary">Envoyer les informations</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
